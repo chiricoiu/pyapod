@@ -3,7 +3,8 @@ import json
 import os
 
 def get_data(api_key):
-    raw_response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={api_key}').text
+    url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}'
+    raw_response = requests.get(url).text
     response = json.loads(raw_response)
     return response
 

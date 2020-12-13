@@ -1,32 +1,34 @@
 import sys
+import os
 import requests
-import PyQt5.QtWidgets as QtWidgets
-import PyQt5.QtGui as QtGui
-import PyQt5.QtCore as QtCore
 
-from win32api import GetSystemMetrics
+from PyQt5 import QtWidgets 
+from PyQt5 import uic
+from PyQt5 import QtGui
 
 
 class MainWin(QtWidgets.QMainWindow):
     
     def __init__(self):
-        super().__init__()
-
-
-        self.img_label = QtWidgets.QLabel(self)        
-        self.img = QtGui.QImage()      
+        super(MainWin, self).__init__()
+        self.img = QtGui.QImage()
         self.initUI()
-        
+
         
     def initUI(self):
-        
-        self.setGeometry(0,0,GetSystemMetrics(0),GetSystemMetrics(1))
-        self.setWindowTitle('Astronomy Picture of the Day')
+        path = os.path.join(os.path.dirname(__file__), "form.ui")
+        ui_file = uic.loadUi(path, self)
         self.show()
+
     
     def showImg(self, img_url):
         self.img.loadFromData(requests.get(img_url).content)
 
-        self.pixmap = QtGui.QPixmap(self.img.scaledToHeight(1440))
+        self.pixmap = QtGui.QPixmap(
+            self.img.scaledToHeight(self.img_label.height()))
         self.img_label.setPixmap(self.pixmap)
-        self.img_label.resize(self.width(), self.height())
+        self.img_label.resize(1920, 1080)
+
+    def showcontent(self, title, explaination):
+        self.title_label.setText(title)
+        self.explain_label.setText(explaination)
