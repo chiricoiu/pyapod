@@ -8,13 +8,17 @@ def get_data(api_key):
     response = json.loads(raw_response)
     return response
 
+def get_copyright(response):
+    copyrights = response['copyright']
+    return copyrights
+
 
 def get_date(response):
     date = response['date']
     return date
 
 
-def get_explaination(response):
+def get_explanation(response):
     explaination = response['explanation']
     return explaination
 
