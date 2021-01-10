@@ -30,6 +30,7 @@ class MainWin(QtWidgets.QMainWindow):
 
         # controls
         self.random_Button.clicked.connect(self.change_random)
+        self.GoToDate_Button.clicked.connect(self.change_date)
 
         
     def initUI(self):
@@ -77,6 +78,8 @@ class MainWin(QtWidgets.QMainWindow):
             if media_type == 'image':
                 hd_img = apod_object_parser.get_hdurl(response)
                 self.showImg(hd_img)
+            else:
+                self.img_label.setText('')
         except Exception as e:
             print(e)
 
@@ -93,8 +96,12 @@ class MainWin(QtWidgets.QMainWindow):
         finally:
             QtWidgets.QApplication.restoreOverrideCursor()
         
-    def update_date(self, date):
+
+    def change_date(self):
+        QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         try:
-            self.dateEdit.setDate(date)
+            self.load_data(str(self.dateEdit.date().toPyDate()))
         except Exception as e:
             print(e)
+        finally:
+            QtWidgets.QApplication.restoreOverrideCursor()
