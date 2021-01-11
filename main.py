@@ -34,7 +34,8 @@ if __name__ == "__main__":
 
     app.setPalette(dark_palette)
 
-    app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+    app.setStyleSheet(
+        "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
     apod = MainWin()
     apod.setWindowTitle('Astrology Picture of the Day')
