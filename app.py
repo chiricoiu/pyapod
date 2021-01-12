@@ -54,7 +54,7 @@ class MainWin(QtWidgets.QMainWindow):
             etime = time.mktime(time.strptime(str(self.today_date), "%Y-%m-%d"))
             ptime = stime + random.random() * (etime - stime)
 
-            # self.showed_date = time.strptime(time.localtime(ptime))
+            self.showed_date = datetime.datetime.utcfromtimestamp(ptime).date()
             self.load_data(time.strftime("%Y-%m-%d", time.localtime(ptime)))
         except Exception as e:
             print(e)
@@ -90,7 +90,7 @@ class MainWin(QtWidgets.QMainWindow):
     def previous_date(self):
         QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         try:
-            if self.showed_date > time.localtime(time.strptime('1995-06-16', "%Y-%m-%d")):
+            if self.showed_date > datetime.datetime.strptime('1995-06-16', "%Y-%m-%d").date():
                 self.showed_date -= datetime.timedelta(days=1)
                 self.load_data(str(self.showed_date))
         except Exception as e:

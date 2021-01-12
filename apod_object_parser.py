@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+from PIL import Image
 
 def get_data(api_key):
     url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}'
