@@ -14,4 +14,4 @@ A cross platform front-end GUI of the popular [Astronomy Picture Of the Day](htt
 * **Report a bug:** See [issues](https://github.com/Foussy/APOD_NASA_Foussy/issues)
 
 ## License
-The [MIT License](LICENSE)
+[MIT License](LICENSE)
