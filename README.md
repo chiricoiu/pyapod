@@ -1,4 +1,4 @@
-# APOD
+# pyapod
 
 A cross platform front-end GUI of the popular [Astronomy Picture Of the Day](https://apod.nasa.gov/apod/astropix.html) website posting photos & videos of Space everyday since 1995.
 
