@@ -1,6 +1,5 @@
 import os
 import requests
-import json
 import datetime, time
 import random
 
@@ -9,14 +8,16 @@ from PyQt5 import QtCore
 from PyQt5 import uic
 from PyQt5 import QtGui
 
-
 import apod_object_parser
 
 
 class MainWin(QtWidgets.QMainWindow):
     
-    def __init__(self):
+    def __init__(self, api_key):
         super(MainWin, self).__init__()
+
+        self.api_key = api_key
+
         self.img = QtGui.QImage()
 
         self.start_date = '1995-06-16'
@@ -101,9 +102,8 @@ class MainWin(QtWidgets.QMainWindow):
     
     def load_data(self, date):
         try:
-            api_key = '4M5w5Q9nBUEvG66YPfj8H4dRJACj48nbdmGiEDV2'
             request = 'date=' + date
-            response = apod_object_parser.get_data(api_key + '&' + request)
+            response = apod_object_parser.get_data(self.api_key + '&' + request)
 
             media_type = apod_object_parser.get_media_type(response)
             date = apod_object_parser.get_date(response)
