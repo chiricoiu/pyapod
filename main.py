@@ -4,7 +4,6 @@ from PyQt5.QtGui import QPalette, QColor
 
 from app import MainWin
 
-# test ssh
 
 WHITE =     QColor(255, 255, 255)
 BLACK =     QColor(0, 0, 0)
